@@ -1,13 +1,20 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
+import Homepage from "./pages/Homepage";
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f5f6f8] font-sans">
+    <>
       <Header />
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/favorites"
+          element={<div className="p-10 text-center">Favorites page</div>}
+        />
+      </Routes>
       <Footer />
-    </div>
+    </>
   );
 }

@@ -13,7 +13,7 @@ export const movies = [
   {
     title: "Parasite",
     rating: 8.6,
-    image: "https://m.media-amazon.com/images/I/91kFYg4fX3L._AC_SL1500_.png",
+    image: "https://m.media-amazon.com/images/I/41kTVLeW1CL._AC_.jpg",
     year: 2019,
     director: "Bong Joon Ho",
     description:
@@ -125,5 +125,17 @@ export const movies = [
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
     genres: ["animation", "adventure", "drama"],
     id: 11,
+  },
+  {
+    title: "The Lion King",
+    rating: 8.5,
+    image:
+      "https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg",
+    year: 1994,
+    director: "Roger Allers, Rob Minkoff",
+    description:
+      "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
+    genres: ["animation", "adventure", "drama"],
+    id: 12,
   },
 ];
