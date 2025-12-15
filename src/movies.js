@@ -7,7 +7,7 @@ export const movies = [
     director: "Christopher Nolan",
     description:
       "A thief who infiltrates dreams gets a shot at redemption if he can plant an idea in a target's mind.",
-    genres: ["sci-fi", "thriller", "action"],
+    genres: ["animation"],
     id: 1,
   },
   {
@@ -18,7 +18,7 @@ export const movies = [
     director: "Bong Joon Ho",
     description:
       "A lower-class family schemes its way into a wealthy household, with consequences spiraling out of control.",
-    genres: ["drama", "thriller", "comedy"],
+    genres: ["action"],
     id: 2,
   },
   {
@@ -30,40 +30,40 @@ export const movies = [
     director: "Denis Villeneuve",
     description:
       "A new blade runner uncovers a secret that could upend the balance between humans and replicants.",
-    genres: ["sci-fi", "drama", "mystery"],
+    genres: ["drama"],
     id: 3,
   },
   {
     title: "Interstellar",
     rating: 8.6,
     image: "https://m.media-amazon.com/images/I/41kTVLeW1CL._AC_.jpg",
-    year: 2014,
+    year: 2010,
     director: "Christopher Nolan",
     description:
       "Explorers travel through a wormhole in search of a new home for humanity.",
-    genres: ["sci-fi", "drama", "adventure"],
+    genres: ["animation"],
     id: 4,
   },
   {
     title: "Amélie",
     rating: 8.3,
     image: "https://m.media-amazon.com/images/I/71OFqSRFDgL._AC_SY679_.jpg",
-    year: 2001,
+    year: 2017,
     director: "Jean-Pierre Jeunet",
     description:
       "A shy Parisian decides to quietly improve the lives of those around her and finds love along the way.",
-    genres: ["romance", "comedy", "drama"],
+    genres: ["action"],
     id: 5,
   },
   {
     title: "Brother",
     rating: 7.8,
     image: "https://m.media-amazon.com/images/I/51EG732BV3L.jpg",
-    year: 1997,
+    year: 2019,
     director: "Aleksei Balabanov",
     description:
       "A young army veteran navigates the criminal underworld of 1990s Saint Petersburg in search of his own code of honor.",
-    genres: ["crime", "drama", "action"],
+    genres: ["drama"],
     id: 6,
   },
   {
@@ -75,7 +75,7 @@ export const movies = [
     director: "Damien Chazelle",
     description:
       "An ambitious drummer clashes with a ruthless mentor in a pursuit of perfection.",
-    genres: ["drama", "music"],
+    genres: ["animation"],
     id: 7,
   },
   {
@@ -83,7 +83,7 @@ export const movies = [
     rating: 8.1,
     image:
       "https://avatars.mds.yandex.net/i?id=f5c78c8ac75d54d46a6265d2d2cebf5e1a962ad8-9284609-images-thumbs&n=13.jpg",
-    year: 2008,
+    year: 2017,
     director: "Clint Eastwood",
     description:
       "A grizzled war veteran forms an unlikely bond with his neighbors and confronts his own prejudices.",
@@ -95,11 +95,11 @@ export const movies = [
     rating: 8.6,
     image:
       "https://upload.wikimedia.org/wikipedia/en/e/e2/The_Green_Mile_%28movie_poster%29.jpg",
-    year: 1999,
+    year: 2014,
     director: "Frank Darabont",
     description:
       "A death row guard witnesses inexplicable events that test his beliefs and compassion.",
-    genres: ["drama", "fantasy", "crime"],
+    genres: ["action"],
     id: 9,
   },
   {
@@ -107,11 +107,11 @@ export const movies = [
     rating: 8.5,
     image:
       "https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg",
-    year: 1994,
+    year: 2019,
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["animation", "adventure", "drama"],
+    genres: ["action"],
     id: 10,
   },
   {
@@ -119,11 +119,11 @@ export const movies = [
     rating: 8.5,
     image:
       "https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg",
-    year: 1994,
+    year: 2010,
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["animation", "adventure", "drama"],
+    genres: ["drama"],
     id: 11,
   },
   {
@@ -131,11 +131,11 @@ export const movies = [
     rating: 8.5,
     image:
       "https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg",
-    year: 1994,
+    year: 2019,
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["animation", "adventure", "drama"],
+    genres: ["animation"],
     id: 12,
   },
 ];
