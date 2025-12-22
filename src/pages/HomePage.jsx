@@ -1,8 +1,7 @@
-
 import { useState } from "react";
+import { movies } from "../movies";
 import MovieList from "../components/MovieList";
 import Filters from "../components/Filters";
-import { movies } from "../movies";
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
@@ -12,15 +11,15 @@ export default function HomePage() {
 
   const filteredMovies = movies.filter((movie) => {
     return (
-      movie.title?.toLowerCase().includes(search.toLowerCase()) &&
-      (year === "" || movie.year === Number(year)) &&
-      (genre === "" || movie.genres?.includes(genre)) &&
-      (rating === "" || movie.rating >= Number(rating))
+      movie.title.toLowerCase().includes(search.toLowerCase()) &&
+      (year ? movie.year === Number(year) : true) &&
+      (genre ? movie.genres.includes(genre) : true) &&
+      (rating ? movie.rating >= Number(rating) : true)
     );
   });
 
   return (
-    <div className="pt-10">
+    <>
       <Filters
         search={search}
         setSearch={setSearch}
@@ -31,7 +30,8 @@ export default function HomePage() {
         rating={rating}
         setRating={setRating}
       />
+
       <MovieList movies={filteredMovies} />
-    </div>
+    </>
   );
 }

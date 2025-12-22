@@ -1,20 +1,19 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Homepage from "./pages/Homepage";
-
+import HomePage from "./pages/HomePage";
+import FavoritesPage from "./pages/FavoritesPage";
 
 export default function App() {
   return (
     <>
       <Header />
+
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route
-          path="/favorites"
-          element={<div className="p-10 text-center">Favorites page</div>}
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
+
       <Footer />
     </>
   );
