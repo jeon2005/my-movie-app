@@ -1,13 +1,4 @@
-export default function Filters({
-  search,
-  setSearch,
-  year,
-  setYear,
-  genre,
-  setGenre,
-  rating,
-  setRating,
-}) {
+export default function Filters({ search, setSearch,year,setYear,genre,setGenre, rating, setRating,}) {
   return (
     <form className="py-6">
       <div className="max-w-6xl mx-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 sm:justify-center">
@@ -30,11 +21,7 @@ export default function Filters({
           <option value="2019">2019</option>
         </select>
 
-        <select
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-          className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
-        >
+        <select value={genre} onChange={(e) => setGenre(e.target.value)} className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm" >
           <option value="">Genres</option>
           <option value="action">Action</option>
           <option value="drama">Drama</option>

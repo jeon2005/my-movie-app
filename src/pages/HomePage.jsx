@@ -17,7 +17,6 @@ export default function HomePage() {
       (rating ? movie.rating >= Number(rating) : true)
     );
   });
-
   return (
     <>
       <Filters

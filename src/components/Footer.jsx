@@ -4,7 +4,6 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-gray-700 text-sm">
         <div>
           <h3 className="font-semibold mb-3">ReactFlix</h3>
-          <p className="text-gray-500 text-sm">Все права защищены.</p>
         </div>
 
         <div>
