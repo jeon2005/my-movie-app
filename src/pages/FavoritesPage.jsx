@@ -1,13 +1,17 @@
-import MovieList from '../components/MovieList';
-
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 export default function FavoritesPage() {
   return (
-    <p className="text-center mt-10 text-gray-500">Нет избранных фильмов</p>
-  );
+    <>
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="font-bold text-center">
+          У вас пока нет избранных фильмов!
+        </h1>
+      </div>
 
-  // return (
-  //   <div className="pt-10">
-  //     <MovieList movies={favorites} />
-  //   </div>
-  // );
+      <Link to="/">
+        <Button text={"go home"} />
+      </Link>
+    </>
+  );
 }
