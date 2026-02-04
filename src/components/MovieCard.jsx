@@ -1,14 +1,22 @@
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
   return (
-    <div className="relative bg-white rounded-xl shadow max-w-[220px] mx-auto">
-      <button onClick={() => console.log(movie)}
-        className="absolute top-2 right-2 bg-black/40 p-2 rounded-full">
-        <svg viewBox="0 0 24 24" fill={"white"} className="w-5 h-5">
-          <path d="M12 21s-6.7-4.35-9.33-7.36C.78 11.52 1.5 7.5 5 6.5c2-.6 3.5.5 4 1.5.5-1 2-2.1 4-1.5 3.5 1 4.22 5.02 2.33 7.14C18.7 16.65 12 21 12 21z" />
+    <div className="relative bg-white rounded-xl shadow max-w-[220px] mx-auto p-2">
+      <button
+        onClick={() => toggleFavorite(movie)}
+        className="absolute top-2 right-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill={isFavorite ? "red" : "white"}
+          stroke="red"
+          width="24"
+        >
+          <path d="M12 21s-6.7-4.3-9.3-7.3C-1.1 9.7 2.4 3 7.5 5.5c1.9 1 2.5 2.5 2.5 2.5s.6-1.5 2.5-2.5C17.6 3 21.1 9.7 21.3 13.7 18.7 16.7 12 21 12 21z" />
         </svg>
       </button>
 
-      <img src={movie.image} alt={movie.title}/>
+      <img src={movie.image} alt={movie.title} />
       <p className="p-2">{movie.title}</p>
     </div>
   );
