@@ -7,18 +7,16 @@ import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
 
 export default function App() {
-  // 1️⃣ единый источник избранных
+  
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // 2️⃣ сохраняем после обновления
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  // 3️⃣ логика сердечка
   function toggleFavorite(movie) {
     const isFavorite = favorites.some((m) => m.id === movie.id);
 

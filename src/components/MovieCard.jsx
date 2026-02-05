@@ -1,9 +1,10 @@
 export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
   return (
-    <div className="relative bg-white rounded-xl shadow max-w-[220px] mx-auto p-2">
+    <div className="relative bg-white rounded-xl w-full flex flex-col">
+      {/* СЕРДЕЧКО — ПРИКРЕПЛЕНО К КАРТОЧКЕ */}
       <button
         onClick={() => toggleFavorite(movie)}
-        className="absolute top-2 right-2"
+        className="absolute top-3 right-3 z-20"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -16,8 +17,29 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
         </svg>
       </button>
 
-      <img src={movie.image} alt={movie.title} />
-      <p className="p-2">{movie.title}</p>
+      {/* КАРТИНКУ НЕ ТРОГАЕМ */}
+      <div className="p-2">
+        <img
+          src={movie.image}
+          alt={movie.title}
+          className="
+            w-full
+            h-auto
+            max-h-96
+            object-contain
+            rounded-md
+          "
+        />
+      </div>
+
+      {/* НАЗВАНИЕ */}
+      <p className="px-2 pt-1 text-center font-medium">{movie.title}</p>
+
+      {/* ГОД И РЕЙТИНГ */}
+      <div className="px-2 pb-2 flex gap-2 justify-center text-xs text-gray-600">
+        <span>{movie.year} г.</span>
+        <span>{movie.rating} IMDB</span>
+      </div>
     </div>
   );
 }
