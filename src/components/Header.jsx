@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import Button from './Button';
 
 export default function Header() {
   return (
@@ -10,7 +11,7 @@ export default function Header() {
 
         <nav className="flex gap-6 text-sm">
           <Link to="/" className="hover:text-black transition">
-            Home
+            <Button text="Home" />
           </Link>
           <Link to="/favorites" className="hover:text-black transition">
             Favorites
