@@ -16,7 +16,7 @@ export default function Footer() {
             </li>
             <li>
               <a className="hover:text-black transition cursor-pointer">
-                Избранное
+                Избранные
               </a>
             </li>
             <li>
