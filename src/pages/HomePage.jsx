@@ -3,11 +3,12 @@ import MovieList from "../components/MovieList";
 import Filters from "../components/Filters";
 import { useState } from "react";
 
-export default function HomePage() {
+export default function HomePage({favorites, toggleFavorite }) {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("");
   const [genre, setGenre] = useState("");
   const [rating, setRating] = useState("");
+
 
   const filteredMovies = movies.filter((movie) => {
     return (
@@ -33,6 +34,8 @@ export default function HomePage() {
 
       <MovieList
         movies={filteredMovies}
+        favorites={favorites}
+        toggleFavorite={toggleFavorite}
       />
     </>
   );

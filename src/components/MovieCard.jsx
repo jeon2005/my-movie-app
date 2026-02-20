@@ -1,30 +1,33 @@
-import { Link } from 'react-router-dom';
 
-export default function MovieCard({ movie }) {
+import { Link } from "react-router-dom";
+import Button from "./Button";
+export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
   return (
-    <Link to={`/movie/${movie.id}`}>
-      <div className="relative bg-white rounded-xl w-full flex flex-col">
-        <div className="p-2">
-          <img
-            src={movie.image}
-            alt={movie.title}
-            className="
-            w-full
-            h-auto
-            max-h-96
-            object-contain
-            rounded-md
-          "
-          />
-        </div>
+    <div className="relative bg-white rounded-xl border-gray-300 border overflow-hidden">
+      <div className="absolute top-2 right-2 z-10">
+        <Button
+          text={isFavorite ? "❤️" : "🤍"}
+          onButtonClick={(e) => {
+            e.preventDefault();
+            toggleFavorite(movie.id);
+          }}
+        />
+      </div>
 
-        <p className="px-2 pt-1 text-center font-medium">{movie.title}</p>
-
-        <div className="px-2 pb-2 flex gap-2 justify-center text-xs text-gray-600">
+      <Link to={`/movie/${movie.id}`}>
+        <img
+          src={movie.image}
+          alt={movie.title}
+          className="w-full h-auto max-h-96 object-contain"
+        />
+        <p className="px-1 pt-1 text-center font-medium text-sm">
+          {movie.title}
+        </p>
+        <div className="px-1 pb-1 flex gap-1 justify-center text-xs text-gray-600">
           <span>{movie.year} г.</span>
           <span>{movie.rating} IMDB</span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

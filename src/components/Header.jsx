@@ -14,7 +14,7 @@ export default function Header() {
             <Button text="Home" />
           </Link>
           <Link to="/favorites" className="hover:text-black transition">
-            Favorites
+            <Button text="Favorites"/>
           </Link>
         </nav>
       </div>

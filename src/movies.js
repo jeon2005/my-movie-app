@@ -7,7 +7,8 @@ export const movies = [
     director: "Christopher Nolan",
     description:
       "A thief who infiltrates dreams gets a shot at redemption if he can plant an idea in a target's mind.",
-    genres: ["animation"],
+    genres: ["Animation"],
+    actors: "Hudson Williams",
     id: 1,
   },
   {
@@ -18,7 +19,8 @@ export const movies = [
     director: "Bong Joon Ho",
     description:
       "A lower-class family schemes its way into a wealthy household, with consequences spiraling out of control.",
-    genres: ["action"],
+    genres: ["Action"],
+    actors: "Conor Storrie",
     id: 2,
   },
   {
@@ -30,7 +32,8 @@ export const movies = [
     director: "Denis Villeneuve",
     description:
       "A new blade runner uncovers a secret that could upend the balance between humans and replicants.",
-    genres: ["drama"],
+    genres: ["Drama"],
+    actors: "Stella Blume",
     id: 3,
   },
   {
@@ -41,7 +44,8 @@ export const movies = [
     director: "Christopher Nolan",
     description:
       "Explorers travel through a wormhole in search of a new home for humanity.",
-    genres: ["animation"],
+    genres: ["Animation"],
+    actors: "Jeck Kim",
     id: 4,
   },
   {
@@ -52,7 +56,8 @@ export const movies = [
     director: "Jean-Pierre Jeunet",
     description:
       "A shy Parisian decides to quietly improve the lives of those around her and finds love along the way.",
-    genres: ["action"],
+    genres: ["Action"],
+    actors: "John Samil",
     id: 5,
   },
   {
@@ -63,7 +68,8 @@ export const movies = [
     director: "Aleksei Balabanov",
     description:
       "A young army veteran navigates the criminal underworld of 1990s Saint Petersburg in search of his own code of honor.",
-    genres: ["drama"],
+    genres: ["Drama"],
+    actors: "Mady Candy",
     id: 6,
   },
   {
@@ -75,7 +81,8 @@ export const movies = [
     director: "Damien Chazelle",
     description:
       "An ambitious drummer clashes with a ruthless mentor in a pursuit of perfection.",
-    genres: ["animation"],
+    genres: ["Animation"],
+    actors: "Stella Blume",
     id: 7,
   },
   {
@@ -87,7 +94,8 @@ export const movies = [
     director: "Clint Eastwood",
     description:
       "A grizzled war veteran forms an unlikely bond with his neighbors and confronts his own prejudices.",
-    genres: ["drama"],
+    genres: ["Drama"],
+    actors: "Stella Blume",
     id: 8,
   },
   {
@@ -99,7 +107,8 @@ export const movies = [
     director: "Frank Darabont",
     description:
       "A death row guard witnesses inexplicable events that test his beliefs and compassion.",
-    genres: ["action"],
+    genres: ["Action"],
+    actors: "Stella Blume",
     id: 9,
   },
   {
@@ -111,7 +120,8 @@ export const movies = [
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["action"],
+    genres: ["Action"],
+    actors: "Stella Blume",
     id: 10,
   },
   {
@@ -123,7 +133,8 @@ export const movies = [
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["drama"],
+    genres: ["Drama"],
+    actors: "Stella Blume",
     id: 11,
   },
   {
@@ -135,7 +146,8 @@ export const movies = [
     director: "Roger Allers, Rob Minkoff",
     description:
       "Young Simba must face exile and return to claim his place as king of the Pride Lands.",
-    genres: ["animation"],
+    genres: ["Animation"],
+    actors: "Stella Blume",
     id: 12,
   },
 ];
