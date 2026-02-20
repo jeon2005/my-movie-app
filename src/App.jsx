@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import MoviePage from "./pages/MoviePage";
 
-
 // export default function App() {
 //   return (
 //     <>
@@ -32,6 +31,7 @@ import MoviePage from "./pages/MoviePage";
 //     </>
 //   );
 // }
+
 import { useEffect, useState } from "react";
 
 function App() {
@@ -57,7 +57,6 @@ function App() {
 
   return (
     <>
-     
       <Header />
       <Routes>
         <Route
@@ -75,7 +74,12 @@ function App() {
             />
           }
         />
-        <Route path="/movie/:id" element={<MoviePage />} />
+        <Route
+          path="/movie/:id"
+          element={
+            <MoviePage favorites={favorites} toggleFavorite={toggleFavorite} />
+          }
+        />
       </Routes>
     </>
   );

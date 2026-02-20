@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import { useParams } from "react-router-dom";
 import { movies } from "../movies";
 
-export default function MoviePage() {
+export default function MoviePage({ favorites, toggleFavorite }) {
   const { id } = useParams();
   const movie = movies.find((item) => item.id === Number(id));
 
@@ -25,7 +25,10 @@ export default function MoviePage() {
           <h1 className="text-3xl font-bold">{movie.title}</h1>
 
           <div className="">
-            <Button text={"В избранные"} />
+            <Button
+              text={favorites.includes(movie.id) ? "❤️" : "🤍"}
+              onButtonClick={(e) => toggleFavorite(movie.id)}
+            />
           </div>
 
           <p>Год: {movie.year}</p>

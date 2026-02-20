@@ -12,7 +12,6 @@ export default function FavoritesPage({ favorites, toggleFavorite }) {
   return (
     <div className="max-w-6xl mx-auto mt-6">
       <h1 className="text-2xl font-bold mb-4">Избранные фильмы</h1>
-
       {favoriteMovies.length > 0 ? (
         <MovieList
           movies={favoriteMovies}
