@@ -24,7 +24,7 @@ export default function MoviePage() {
         <div className="md:w-2/3 flex flex-col gap-3 relative">
           <h1 className="text-3xl font-bold">{movie.title}</h1>
 
-          <div className="bg-blue-400 px-2 py-2 rounded-lg border-2 ">
+          <div className="">
             <Button text={"В избранные"} />
           </div>
 
