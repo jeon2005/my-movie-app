@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Button from "./Button";
 export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
@@ -7,10 +6,7 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
       <div className="absolute top-2 right-2 z-10">
         <Button
           text={isFavorite ? "❤️" : "🤍"}
-          onButtonClick={(e) => {
-            e.preventDefault();
-            toggleFavorite(movie.id);
-          }}
+          onButtonClick={(e) => toggleFavorite(movie.id)}
         />
       </div>
 

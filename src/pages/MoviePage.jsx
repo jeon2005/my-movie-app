@@ -5,7 +5,7 @@ import { movies } from "../movies";
 export default function MoviePage({ favorites, toggleFavorite }) {
   const { id } = useParams();
   const movie = movies.find((item) => item.id === Number(id));
-
+  console.log(movie);
   if (!movie) {
     return <h1>Фильм не найден</h1>;
   }

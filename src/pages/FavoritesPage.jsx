@@ -1,14 +1,12 @@
 import MovieList from "../components/MovieList";
 import { movies } from "../movies";
 
-// export default function FavoritesPage({ favorites, toggleFavorite }) {
-//   const favoriteMovies = movies.filter((movie) =>
-//     favorites?.includes(movie.id),
-//   );
 export default function FavoritesPage({ favorites, toggleFavorite }) {
   const favoriteMovies = movies.filter((movie) =>
     favorites?.includes(movie.id),
   );
+  console.log(favoriteMovies);
+  
   return (
     <div className="max-w-6xl mx-auto mt-6">
       <h1 className="text-2xl font-bold mb-4">Избранные фильмы</h1>

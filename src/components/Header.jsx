@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Button from './Button';
-
 export default function Header() {
   return (
     <header className="bg-gray-100 border-b py-6 px-4">
