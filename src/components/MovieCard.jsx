@@ -6,7 +6,7 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
       <div className="absolute top-2 right-2 z-10">
         <Button
           text={isFavorite ? "❤️" : "🤍"}
-          onButtonClick={(e) => toggleFavorite(movie.id)}
+          onButtonClick={() => toggleFavorite(movie.id)}
         />
       </div>
 

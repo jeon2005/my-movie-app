@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import { routes } from "../const";
+
 export default function Header() {
   return (
     <header className="bg-gray-400 border-b py-6 px-4">
@@ -12,10 +14,9 @@ export default function Header() {
           <Link to="/" className="hover:text-black transition">
             <Button text="Home" />
           </Link>
-          <Link to="/favorites" className="hover:text-black transition">
+          <Link to={routes.favorite} className="hover:text-black transition">
             <Button text="Favorites" />
           </Link>
-          
         </nav>
       </div>
     </header>

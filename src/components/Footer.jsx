@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { routes } from "../const";
 export default function Footer() {
   return (
     <footer className="bg-gray-500 text-gray-200 mt-20">
@@ -10,7 +10,6 @@ export default function Footer() {
             Сайт с фильмами на React + TMDB API
           </p>
         </div>
-
         <div>
           <h3 className="text-white font-semibold mb-3">Навигация</h3>
           <ul className="space-y-2 text-sm">
@@ -20,7 +19,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/favorite" className="hover:text-white transition">
+              <Link
+                to={routes.favorites}
+                className="hover:text-white transition"
+              >
                 Избранные
               </Link>
             </li>
@@ -45,6 +47,7 @@ export default function Footer() {
         <a
           href="https://www.themoviedb.org/"
           target="_blank"
+          rel="noreferrer"
           className="flex flex-col items-center hover:opacity-80 transition"
         >
           <img src="/tmdb-logo.svg" alt="TMDB Logo" className="w-32" />
