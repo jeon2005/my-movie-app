@@ -27,7 +27,7 @@ export default function MoviePage({ favorites, toggleFavorite }) {
           <div className="">
             <Button
               text={favorites.includes(movie.id) ? "❤️" : "🤍"}
-              onButtonClick={(e) => toggleFavorite(movie.id)}
+              onButtonClick={() => toggleFavorite(movie.id)}
             />
           </div>
 

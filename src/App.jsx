@@ -4,10 +4,11 @@ import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import MoviePage from "./pages/MoviePage";
 import { useEffect, useState } from "react";
+import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   const [favorites, setFavorites] = useState([]);
-
   const toggleFavorite = (movieId) => {
     if (favorites.includes(movieId)) {
       setFavorites(favorites.filter((id) => id !== movieId));
@@ -29,33 +30,41 @@ function App() {
   }, [favorites]);
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage favorites={favorites} toggleFavorite={toggleFavorite} />
-          }
-        />
-        <Route
-          path="/favorites"
-          element={
-            <FavoritesPage
-              favorites={favorites}
-              toggleFavorite={toggleFavorite}
-            />
-          }
-        />
-        <Route
-          path="/movie/:id"
-          element={
-            <MoviePage favorites={favorites} toggleFavorite={toggleFavorite} />
-          }
-        />
-      </Routes>
-    </>
+
+      <main className="flex-1">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage favorites={favorites} toggleFavorite={toggleFavorite} />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <FavoritesPage
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
+            }
+          />
+          <Route
+            path="/movie/:id"
+            element={
+              <MoviePage
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
-
 export default App;
