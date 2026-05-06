@@ -14,7 +14,7 @@ export default function Header() {
           <Link to="/" className="hover:text-black transition">
             <Button text="Home" />
           </Link>
-          <Link to={routes.favorite} className="hover:text-black transition">
+          <Link to={routes.favorites} className="hover:text-black transition">
             <Button text="Favorites" />
           </Link>
         </nav>

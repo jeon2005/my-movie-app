@@ -6,9 +6,10 @@ import MoviePage from "./pages/MoviePage";
 import { useEffect, useState } from "react";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
-
 function App() {
   const [favorites, setFavorites] = useState([]);
+  const [movies, setMovies] = useState([]);
+
   const toggleFavorite = (movieId) => {
     if (favorites.includes(movieId)) {
       setFavorites(favorites.filter((id) => id !== movieId));
@@ -17,17 +18,36 @@ function App() {
     }
   };
 
+
   useEffect(() => {
     const saved = localStorage.getItem("favorites");
     if (saved) {
       setFavorites(JSON.parse(saved));
     }
-    console.log(saved);
   }, []);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
+          },
+        },
+      );
+
+      const data = await response.json();
+      setMovies(data.results);
+    };
+
+    getMovies();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -38,13 +58,19 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage favorites={favorites} toggleFavorite={toggleFavorite} />
+              <HomePage
+                movies={movies}
+                setMovies={setMovies}
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
             }
           />
           <Route
             path="/favorites"
             element={
               <FavoritesPage
+                movies={movies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
               />
@@ -54,6 +80,7 @@ function App() {
             path="/movie/:id"
             element={
               <MoviePage
+                movies={movies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
               />

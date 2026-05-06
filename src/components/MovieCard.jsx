@@ -12,7 +12,7 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
 
       <Link to={`/movie/${movie.id}`}>
         <img
-          src={movie.image}
+          src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
           alt={movie.title}
           className="w-full h-auto max-h-96 object-contain"
         />
@@ -20,8 +20,8 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
           {movie.title}
         </p>
         <div className="px-1 pb-1 flex gap-1 justify-center text-xs text-gray-600">
-          <span>{movie.year} г.</span>
-          <span>{movie.rating} IMDB</span>
+          <span>{movie.release_date} г.</span>
+          <span>{movie.vote_average} IMDB</span>
         </div>
       </Link>
     </div>

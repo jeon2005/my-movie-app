@@ -1,5 +1,5 @@
-
 export const routes = {
   favorites: "/favorites",
-  home: "/"
+  home: "/",
+  movie: (id) => `/movie/${id}`
 };
