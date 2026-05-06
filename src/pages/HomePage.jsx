@@ -1,10 +1,18 @@
-import MovieList from "../components/MovieList";
-import Filters from "../components/Filters";
-import { useState } from "react";
+import MovieList from '../components/MovieList';
+import Filters from '../components/Filters';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useState } from 'react';
 
-export default function HomePage({ movies, favorites, toggleFavorite }) {
-  const [search, setSearch] = useState("");
-  const [rating, setRating] = useState("");
+export default function HomePage({
+  movies,
+  favorites,
+  toggleFavorite,
+  isLoading,
+}) {
+  const [search, setSearch] = useState('');
+  const [rating, setRating] = useState('');
+
+  console.log('movies', movies);
 
   const filteredMovies = movies.filter((movie) => {
     return (
@@ -22,11 +30,17 @@ export default function HomePage({ movies, favorites, toggleFavorite }) {
         setRating={setRating}
       />
 
-      <MovieList
-        movies={filteredMovies}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
-      />
+      {isLoading ? (
+        <div className="flex justify-center items-center min-h-80">
+          <CircularProgress aria-label="Loading…" />
+        </div>
+      ) : (
+        <MovieList
+          movies={filteredMovies}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
+      )}
     </>
   );
 }
