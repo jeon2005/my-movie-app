@@ -6,9 +6,11 @@ import MoviePage from "./pages/MoviePage";
 import { useEffect, useState } from "react";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
+import { useMovies } from "./hooks/useMovies";
 function App() {
   const [favorites, setFavorites] = useState([]);
-  const [movies, setMovies] = useState([]);
+  const { movies } = useMovies();
+  const [selectedYear, setSelectedYear] = useState("");
 
   const toggleFavorite = (movieId) => {
     if (favorites.includes(movieId)) {
@@ -17,7 +19,6 @@ function App() {
       setFavorites([...favorites, movieId]);
     }
   };
-
 
   useEffect(() => {
     const saved = localStorage.getItem("favorites");
@@ -30,25 +31,6 @@ function App() {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-        {
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
-          },
-        },
-      );
-
-      const data = await response.json();
-      setMovies(data.results);
-    };
-
-    getMovies();
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -60,9 +42,10 @@ function App() {
             element={
               <HomePage
                 movies={movies}
-                setMovies={setMovies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
+                selectedYear={selectedYear}
+                setSelectedYear={setSelectedYear}
               />
             }
           />
@@ -86,6 +69,7 @@ function App() {
               />
             }
           />
+          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -1,11 +1,30 @@
+import { useState } from "react";
 import Button from "../components/Button";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-export default function MoviePage({ movies, favorites, toggleFavorite }) {
+export default function MoviePage({ favorites, toggleFavorite }) {
   const { id } = useParams();
-const movie = movies.find((item) => item.id === Number(id));
- 
-  if (!movie) {
+  const [movieDetails, setMovieDetails] = useState(null);
+
+  useEffect(() => {
+    const getMovies = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?language=en-US&page=1`,
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+          },
+        },
+      );
+
+      const data = await response.json();
+      setMovieDetails(data);
+    };
+    getMovies();
+  }, [id]);
+
+  if (!movieDetails) {
     return <h1>Загрузка...</h1>;
   }
   return (
@@ -13,28 +32,25 @@ const movie = movies.find((item) => item.id === Number(id));
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/3">
           <img
-            src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+            src={"https://image.tmdb.org/t/p/w500" + movieDetails.poster_path}
             className="w-full h-[500px] object-contain rounded-2xl"
           />
         </div>
 
         <div className="md:w-2/3 flex flex-col gap-3 relative">
-          <h1 className="text-3xl font-bold">{movie.title}</h1>
+          <h1 className="text-3xl font-bold">{movieDetails.title}</h1>
 
           <div className="">
             <Button
-              text={favorites.includes(movie.id) ? "❤️" : "🤍"}
-              onButtonClick={() => toggleFavorite(movie.id)}
+              text={favorites.includes(movieDetails.id) ? "❤️" : "🤍"}
+              onButtonClick={() => toggleFavorite(movieDetails.id)}
             />
           </div>
 
-          <p>Год: {movie.release_date}</p>
-          <p>Рейтинг: {movie.vote_average} IMDB</p>
-          {/* <p>Режиссер: {movie.director}</p> */}
-          {/* <p>Жанры: {movie.genres}</p> */}
-          {/* <p>Актеры: {movie.actors}</p> */}
-
-          <p>Описание: {movie.overview}</p>
+          <p>Год: {movieDetails.release_date}</p>
+          <p>Рейтинг: {movieDetails.vote_average} IMDB</p>
+          <p>Genres {movieDetails.genres?.map((genre) => genre.name)}</p>
+          <p>Описание: {movieDetails.overview}</p>
         </div>
       </div>
     </div>

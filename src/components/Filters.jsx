@@ -7,7 +7,10 @@ export default function Filters({
   setGenre,
   rating,
   setRating,
+  movies,
+  genres,
 }) {
+  const years = movies.map((movie) => movie.release_date.slice(0, 4));
   return (
     <form className="py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-2 md:px-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 sm:justify-center">
@@ -25,9 +28,11 @@ export default function Filters({
           className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
         >
           <option value="">Years</option>
-          <option value="2010">2010</option>
-          <option value="2017">2017</option>
-          <option value="2019">2019</option>
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
         </select>
 
         <select
@@ -36,9 +41,13 @@ export default function Filters({
           className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
         >
           <option value="">Genres</option>
-          <option value="action">Action</option>
-          <option value="drama">Drama</option>
-          <option value="animation">Animation</option>
+          <option value="">Genres</option>
+
+          {genres?.map((genre) => (
+            <option key={genre.id} value={genre.id}>
+              {genre.name}
+            </option>
+          ))}
         </select>
         <select
           value={rating}
