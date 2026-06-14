@@ -33,12 +33,15 @@ export default function HomePage({
     fetchGenres();
   }, []);
   const filteredMovies = movies.filter((movie) => {
-    return (
-      movie.title.toLowerCase().includes(search.toLowerCase()) &&
-      (rating ? movie.vote_average >= Number(rating) : true) &&
-      (genre ? movie.genre_ids.includes(Number(genre)) : true) &&
-      (selectedYear ? movie.release_date.startsWith(selectedYear) : true)
-    );
+    const matchesSearch = movie.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    const matchesRating = rating ? movie.vote_average >= Number(rating) : true;
+    const matchesGenre = genre ? movie.genre_ids.includes(Number(genre)) : true;
+    const matchesYear = selectedYear
+      ? movie.release_date.startsWith(selectedYear)
+      : true;
+    return matchesSearch && matchesRating && matchesGenre && matchesYear;
   });
 
   return (

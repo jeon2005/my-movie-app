@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import { useMovies } from "./hooks/useMovies";
 function App() {
   const [favorites, setFavorites] = useState([]);
-  const { movies } = useMovies();
+  const { movies, error, isLoading } = useMovies();
   const [selectedYear, setSelectedYear] = useState("");
 
   const toggleFavorite = (movieId) => {
@@ -66,10 +66,12 @@ function App() {
                 movies={movies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
+                isLoading={isLoading}
+                error={error}
               />
             }
           />
-          
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
