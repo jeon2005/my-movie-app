@@ -1,35 +1,35 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+async function fetchMovies(search, page) {
+  let url;
+  if (search) {
+    url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&page=${page}`;
+  } else {
+    url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`;
+  }
 
-export function useMovies() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setLoading] = useState();
-  const [error, setError] = useState();
+  const response = await fetch(url, {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+    },
+  });
 
-  useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const response = await fetch(
-          "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-          {
-            headers: {
-              accept: "application/json",
-              Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-            },
-          },
-        );
+  if (!response.ok) {
+    throw new Error("Ошибка загрузки фильмов");
+  }
 
-        const data = await response.json();
+  const data = await response.json();
+  return data.results;
+}
 
-        setMovies(data.results);
-      } catch {
-        setError("Ошибка загрузки");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getMovies();
-  }, []);
-
+export function useMovies(search, page) {
+  const {
+    data: movies = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["movies", search],
+    queryFn: () => fetchMovies(search, page),
+  });
   return { movies, error, isLoading };
 }

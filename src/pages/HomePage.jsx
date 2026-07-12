@@ -8,8 +8,11 @@ export default function HomePage({
   toggleFavorite,
   selectedYear,
   setSelectedYear,
+  search,
+  setSearch,
+  page,
+  setPage,
 }) {
-  const [search, setSearch] = useState("");
   const [rating, setRating] = useState("");
   const [genre, setGenre] = useState("");
   const [genres, setGenres] = useState([]);
@@ -58,11 +61,31 @@ export default function HomePage({
         rating={rating}
         setRating={setRating}
       />
+
       <MovieList
         movies={filteredMovies}
         favorites={favorites}
         toggleFavorite={toggleFavorite}
       />
+
+      <div className="flex justify-center gap-4 my-6">
+        <button
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+          className="px-4 py-2 border rounded"
+        >
+          Previous
+        </button>
+
+        <span>Page {page}</span>
+
+        <button
+          onClick={() => setPage(page + 1)}
+          className="px-4 py-2 border rounded"
+        >
+          Next
+        </button>
+      </div>
     </>
   );
 }

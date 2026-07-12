@@ -8,8 +8,10 @@ import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import { useMovies } from "./hooks/useMovies";
 function App() {
+  const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState([]);
-  const { movies, error, isLoading } = useMovies();
+  const [search, setSearch] = useState("");
+  const { movies, error, isLoading } = useMovies(search, page);
   const [selectedYear, setSelectedYear] = useState("");
 
   const toggleFavorite = (movieId) => {
@@ -46,6 +48,10 @@ function App() {
                 toggleFavorite={toggleFavorite}
                 selectedYear={selectedYear}
                 setSelectedYear={setSelectedYear}
+                search={search}
+                setSearch={setSearch}
+                page={page}
+                setPage={setPage}
               />
             }
           />
