@@ -11,7 +11,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState([]);
   const [search, setSearch] = useState("");
-  const { movies, error, isLoading } = useMovies(search, page);
+  const { movies } = useMovies(search, page);
   const [selectedYear, setSelectedYear] = useState("");
 
   const toggleFavorite = (movieId) => {
@@ -72,8 +72,6 @@ function App() {
                 movies={movies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
-                isLoading={isLoading}
-                error={error}
               />
             }
           />

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 async function fetchMovies(search, page) {
-  let url;
+  let url; //значение меняется ушанга узгартирдим
   if (search) {
-    url = `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&page=${page}`;
+    url = `https://api.themoviedb.org/3/search/movie?query=${search}&page=${page}`;
   } else {
     url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`;
   }
@@ -23,13 +23,10 @@ async function fetchMovies(search, page) {
 }
 
 export function useMovies(search, page) {
-  const {
-    data: movies = [],
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["movies", search],
+  const { data: movies = [] } = useQuery({ 
+    queryKey: ["movies", search, page],
     queryFn: () => fetchMovies(search, page),
   });
-  return { movies, error, isLoading };
+  return { movies };
 }
+ 
