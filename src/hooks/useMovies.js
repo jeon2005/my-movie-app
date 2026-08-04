@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery , keepPreviousData} from "@tanstack/react-query";
 async function fetchMovies(search, page) {
-  let url; //значение меняется ушанга узгартирдим
+  let url; 
   if (search) {
     url = `https://api.themoviedb.org/3/search/movie?query=${search}&page=${page}`;
   } else {
@@ -27,6 +27,7 @@ export function useMovies(search, page) {
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["movies", search, page],
     queryFn: () => fetchMovies(search, page),
+    placeholderData: keepPreviousData,
   });
   const movies = data?.results ?? [];
   const totalPages = data?.totalPages;
