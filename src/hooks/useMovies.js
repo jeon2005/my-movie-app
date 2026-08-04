@@ -6,7 +6,6 @@ async function fetchMovies(search, page) {
   } else {
     url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`;
   }
-
   const response = await fetch(url, {
     headers: {
       accept: "application/json",
@@ -17,16 +16,19 @@ async function fetchMovies(search, page) {
   if (!response.ok) {
     throw new Error("Ошибка загрузки фильмов");
   }
-
   const data = await response.json();
-  return data.results;
+  return {
+    results: data.results,
+    totalPages: data.total_pages,
+  };
 }
 
 export function useMovies(search, page) {
-  const { data: movies = [] } = useQuery({ 
+  const { data, isError, isLoading, error } = useQuery({
     queryKey: ["movies", search, page],
     queryFn: () => fetchMovies(search, page),
   });
-  return { movies };
+  const movies = data?.results ?? [];
+  const totalPages = data?.totalPages;
+return { movies, totalPages, isLoading, isError, error };
 }
- 

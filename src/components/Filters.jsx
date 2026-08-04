@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 export default function Filters({
   search,
-  setSearch,
+  setSearchParams,
   year,
   setYear,
   genre,
@@ -10,21 +11,42 @@ export default function Filters({
   movies,
   genres,
 }) {
+  const [searchValue, setSearchValue] = useState(search);
   const years = movies.map((movie) => movie.release_date.slice(0, 4));
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchValue !== search) {
+        setSearchParams({
+          search: searchValue,
+          page: 1,
+        });
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchValue,search, setSearchParams]);
   return (
     <form className="py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-2 md:px-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 sm:justify-center">
         <input
           type="text"
           placeholder="Search for a movie..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
           className="w-full sm:w-64 border px-3 py-2 rounded-lg text-sm"
         />
 
         <select
           value={year}
-          onChange={(e) => setYear(e.target.value)}
+          onChange={(e) => {
+            setYear(e.target.value);
+            setSearchParams({
+              search,
+              page: 1,
+            });
+          }}
           className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
         >
           <option value="">Years</option>
@@ -37,10 +59,15 @@ export default function Filters({
 
         <select
           value={genre}
-          onChange={(e) => setGenre(e.target.value)}
+          onChange={(e) => {
+            setGenre(e.target.value);
+            setSearchParams({
+              search,
+              page: 1,
+            });
+          }}
           className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
         >
-          <option value="">Genres</option>
           <option value="">Genres</option>
 
           {genres?.map((genre) => (
@@ -51,7 +78,13 @@ export default function Filters({
         </select>
         <select
           value={rating}
-          onChange={(e) => setRating(e.target.value)}
+          onChange={(e) => {
+            setRating(e.target.value);
+            setSearchParams({
+              search,
+              page: 1,
+            });
+          }}
           className="w-full sm:w-40 border px-3 py-2 rounded-lg text-sm"
         >
           <option value="">Ratings</option>

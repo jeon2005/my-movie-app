@@ -1,50 +1,29 @@
 import MovieList from "../components/MovieList";
 import Filters from "../components/Filters";
+import { useGenres } from "../hooks/useGenres";
 import { useState } from "react";
-import { useEffect } from "react";
 export default function HomePage({
   movies,
   favorites,
   toggleFavorite,
-  selectedYear,
-  setSelectedYear,
   search,
-  setSearch,
+  setSearchParams,
   page,
-  setPage,
+  isLoading,
+  error,
+  isError,
+  totalPages,
 }) {
   const [rating, setRating] = useState("");
   const [genre, setGenre] = useState("");
-  const [genres, setGenres] = useState([]);
-  useEffect(() => {
-    async function fetchGenres() {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
-        {
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-          },
-        },
-      );
+  const genres = useGenres();
+  const [selectedYear, setSelectedYear] = useState("");
 
-      const data = await response.json();
-
-      setGenres(data.genres);
-    }
-
-    fetchGenres();
-  }, []);
   const filteredMovies = movies.filter((movie) => {
-    const matchesSearch = movie.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
     const matchesRating = rating ? movie.vote_average >= Number(rating) : true;
     const matchesGenre = genre ? movie.genre_ids.includes(Number(genre)) : true;
-    const matchesYear = selectedYear
-      ? movie.release_date.startsWith(selectedYear)
-      : true;
-    return matchesSearch && matchesRating && matchesGenre && matchesYear;
+    const matchesYear = selectedYear ? movie.release_date.startsWith(selectedYear) : true;
+    return matchesRating && matchesGenre && matchesYear;
   });
 
   return (
@@ -55,22 +34,30 @@ export default function HomePage({
         genre={genre}
         setGenre={setGenre}
         search={search}
-        setSearch={setSearch}
         year={selectedYear}
         setYear={setSelectedYear}
         rating={rating}
         setRating={setRating}
+        setSearchParams={setSearchParams}
       />
 
-      <MovieList
-        movies={filteredMovies}
-        favorites={favorites}
-        toggleFavorite={toggleFavorite}
-      />
-
+      {isLoading && <h2>Loading...</h2>}
+      {isError && <h2>{error.message}</h2>}
+      {!isLoading && !isError && (
+        <MovieList
+          movies={filteredMovies}
+          favorites={favorites}
+          toggleFavorite={toggleFavorite}
+        />
+      )}
       <div className="flex justify-center gap-4 my-6">
         <button
-          onClick={() => setPage(page - 1)}
+          onClick={() =>
+            setSearchParams({
+              search,
+              page: page - 1,
+            })
+          }
           disabled={page === 1}
           className="px-4 py-2 border rounded"
         >
@@ -80,7 +67,13 @@ export default function HomePage({
         <span>Page {page}</span>
 
         <button
-          onClick={() => setPage(page + 1)}
+          onClick={() =>
+            setSearchParams({
+              search,
+              page: page + 1,
+            })
+          }
+          disabled={page === totalPages}
           className="px-4 py-2 border rounded"
         >
           Next

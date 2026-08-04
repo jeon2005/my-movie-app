@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useSearchParams } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
@@ -8,14 +8,18 @@ import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import { useMovies } from "./hooks/useMovies";
 function App() {
-  const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState([]);
-  const [search, setSearch] = useState("");
-  const { movies } = useMovies(search, page);
-  const [selectedYear, setSelectedYear] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("search") ;
+  const page = Number(searchParams.get("page")) ;
+  const { movies, isError, totalPages, isLoading, error } = useMovies(
+    search,
+    page,
+  );
   const toggleFavorite = (movieId) => {
     if (favorites.includes(movieId)) {
+      
       setFavorites(favorites.filter((id) => id !== movieId));
     } else {
       setFavorites([...favorites, movieId]);
@@ -46,12 +50,13 @@ function App() {
                 movies={movies}
                 favorites={favorites}
                 toggleFavorite={toggleFavorite}
-                selectedYear={selectedYear}
-                setSelectedYear={setSelectedYear}
                 search={search}
-                setSearch={setSearch}
                 page={page}
-                setPage={setPage}
+                setSearchParams={setSearchParams}
+                isLoading={isLoading}
+                isError={isError}
+                error={error}
+                totalPages={totalPages}
               />
             }
           />

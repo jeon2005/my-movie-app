@@ -1,28 +1,9 @@
-import { useState } from "react";
 import Button from "../components/Button";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useMovieDetails } from "../hooks/useMovieDetails";
 export default function MoviePage({ favorites, toggleFavorite }) {
   const { id } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
-
-  useEffect(() => {
-    const getMovies = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?language=en-US&page=1`,
-        {
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-          },
-        },
-      );
-
-      const data = await response.json();
-      setMovieDetails(data);
-    };
-    getMovies();
-  }, [id]);
+  const movieDetails = useMovieDetails(id);
 
   if (!movieDetails) {
     return <h1>Загрузка...</h1>;
