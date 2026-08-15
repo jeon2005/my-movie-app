@@ -17,12 +17,12 @@ async function fetchMovieDetails(id) {
 }
 
 export function useMovieDetails(id) {
-  const { data } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["movie", id],
     queryFn: () => fetchMovieDetails(id),
   });
 
-  return data;
+  return {data, isLoading, isError, error};
 }
 // export function useGenres() {
 //   const { data = [] } = useQuery({
