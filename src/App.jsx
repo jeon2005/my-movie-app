@@ -11,7 +11,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("search");
+  const search = searchParams.get("search") || "";
   const page = Number(searchParams.get("page")) || 1;
   const { movies, isError, totalPages, isLoading, error } = useMovies(
     search,
