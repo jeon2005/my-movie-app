@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import { useMovies } from "./hooks/useMovies";
 function App() {
   const [favorites, setFavorites] = useState([]);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
   const page = Number(searchParams.get("page")) || 1;

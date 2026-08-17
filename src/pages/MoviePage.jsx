@@ -7,10 +7,10 @@ export default function MoviePage({ favorites, toggleFavorite }) {
   if (isLoading) {
     return <h1>Загрузка...</h1>;
   }
-
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+   const isFavorite = favorites.includes(data.id);
   return (
     <div className="max-w-6xl mx-auto px-4 mt-8">
       <div className="flex flex-col md:flex-row gap-8">
@@ -26,8 +26,11 @@ export default function MoviePage({ favorites, toggleFavorite }) {
 
           <div className="">
             <Button
-              text={favorites.includes(data.id) ? "❤️" : "🤍"}
               onButtonClick={() => toggleFavorite(data.id)}
+              text={isFavorite ? "❤️" : "🤍"}
+              ariaLabel={
+                isFavorite ? "Удалить из избранного" : "Добавить в избранное"
+              }
             />
           </div>
 

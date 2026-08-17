@@ -22,13 +22,5 @@ export function useMovieDetails(id) {
     queryFn: () => fetchMovieDetails(id),
   });
 
-  return {data, isLoading, isError, error};
+  return { data, isLoading, isError, error };
 }
-// export function useGenres() {
-//   const { data = [] } = useQuery({
-//     queryKey: ["genres"],
-//     queryFn: fetchGenres,
-//   });
-
-//   return data;
-// }
