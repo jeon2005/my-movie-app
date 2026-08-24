@@ -1,0 +1,16 @@
+{
+  // Конфиг только для папки с упражнениями — на сам проект (Vite) он не влияет.
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "react-jsx",
+    "strict": true,           // главный переключатель: включает строгие проверки
+    "noEmit": true,           // ничего не компилируем, только проверяем типы
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["*.ts", "*.tsx"],
+  "exclude": ["solutions"]
+}
