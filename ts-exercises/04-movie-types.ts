@@ -16,14 +16,22 @@
 // Задача 1. Опиши поля фильма (типы: number, string, number[]).
 // TODO: замени строку ниже на настоящие поля
 export interface Movie {
-  todo?: unknown;
+ id:number,
+ title:string,
+ poster_path:string,
+ release_date:string,
+ vote_aerage:number,
+ genre_ids:number[],
+ overview:string
 }
 
 // Задача 2. Ответ TMDB на список: { page, results, total_pages }.
 //   page — число,  results — массив Movie (Movie[]),  total_pages — число
 // TODO: замени строку ниже на настоящие поля
 export interface MoviesResponse {
-  todo?: unknown;
+  page:number,
+  results:Movie[],
+  total_pages:number
 }
 
 
