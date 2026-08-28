@@ -8,7 +8,8 @@
 // Задача 1. У жанра есть id (число) и name (строка). Опиши эти поля.
 // TODO: замени строку ниже на настоящие поля
 type Genre = {
-  todo?: unknown;
+  id:number,
+  name:string
 };
 
 const drama: Genre = { id: 18, name: "Drama" };
@@ -16,7 +17,8 @@ const drama: Genre = { id: 18, name: "Drama" };
 // Задача 2. name — строка (обязателен). avatarUrl — строка, но необязателен (?).
 // TODO: замени строку ниже на настоящие поля
 type User = {
-  todo?: unknown;
+name:string,
+avatarUrl:string,
 };
 
 const userA: User = { name: "Аня" };
@@ -24,7 +26,7 @@ const userB: User = { name: "Борис", avatarUrl: "https://..." };
 
 // Задача 3. Статус может быть только одним из трёх слов.
 // TODO: замени string на union  "idle" | "loading" | "error"
-type LoadStatus = string;
+type LoadStatus = "idle" | "loading" | "error";
 
 const loadStatus: LoadStatus = "loading";
 
