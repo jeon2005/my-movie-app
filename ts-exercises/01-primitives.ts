@@ -3,23 +3,21 @@
 // Добавь типы там, где стоит // TODO. Больше ничего не меняй.
 // Проверка:  npm run ts:check   (нет ошибок = готово)
 
-
 // Задача 1. Добавь тип параметру rating (это число, например 8.85).
 // TODO
-export function formatRating(rating) {
+export function formatRating(rating: number) {
   return `${rating.toFixed(1)} / 10`;
 }
 
 // Задача 2. name — строка, moviesCount — число.
 // TODO
-export function greet(name, moviesCount) {
+export function greet(name: string, moviesCount: number) {
   return `Привет, ${name}! У тебя в избранном ${moviesCount} фильм(ов).`;
 }
 
 // Задача 3. Замени any на подходящий примитивный тип.
 // TODO
-const isReleased: any = true;
-
+const isReleased: boolean = true;
 
 // ↓ Проверки — не трогай ↓
 formatRating(8.85);
