@@ -11,7 +11,7 @@
 //   null -> 1,  "abc" -> 1,  "5" -> 5,  "-3" -> 1
 // Укажи тип параметра raw:  string | null
 // TODO
-export function parsePage(raw) {
+export function parsePage(raw: string | null) {
   const n = Number(raw);
   if (raw === null || Number.isNaN(n) || n < 1) {
     return 1;
@@ -22,7 +22,7 @@ export function parsePage(raw) {
 // Задача 2. search тоже приходит как string | null.
 // Верни текст для инпута: если null — пустую строку "".
 // TODO
-export function normalizeSearch(search) {
+export function normalizeSearch(search:string | null) {
   if (search === null) {
     return "";
   }
