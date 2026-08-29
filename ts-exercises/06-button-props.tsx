@@ -11,7 +11,7 @@
 type ButtonProps = {
   label: string;
   onClick: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export function Button({ label, onClick, disabled }: ButtonProps) {

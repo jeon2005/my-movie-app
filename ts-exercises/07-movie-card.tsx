@@ -3,7 +3,6 @@
 // Переиспользуем тип Movie из упражнения 04 в пропсах компонента.
 // Похоже на твой настоящий MovieCard.jsx.
 
-
 import type { Movie } from "./04-movie-types";
 
 // Задача. Опиши пропсы карточки:
@@ -12,25 +11,35 @@ import type { Movie } from "./04-movie-types";
 //   onToggleFavorite — функция:  (id: number) => void
 // TODO: замени строку ниже на настоящие поля
 type MovieCardProps = {
-  todo?: unknown;
+  movie: Movie;
+  isFavorite: boolean;
+  onToggleFavorite: (id: number) => void;
 };
 
-export function MovieCard({ movie, isFavorite, onToggleFavorite }: MovieCardProps) {
+export function MovieCard({
+  movie,
+  isFavorite,
+  onToggleFavorite,
+}: MovieCardProps) {
   return (
     <div>
       <button
-        aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+        aria-label={
+          isFavorite ? "Убрать из избранного" : "Добавить в избранное"
+        }
         onClick={() => onToggleFavorite(movie.id)}
       >
         {isFavorite ? "❤️" : "🤍"}
       </button>
-      <img src={"https://image.tmdb.org/t/p/w500" + movie.poster_path} alt={movie.title} />
+      <img
+        src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+        alt={movie.title}
+      />
       <p>{movie.title}</p>
       <span>{movie.vote_average} IMDB</span>
     </div>
   );
 }
-
 
 // ↓ Проверки — не трогай ↓
 const sample: Movie = {
@@ -46,7 +55,11 @@ const sample: Movie = {
 export function Demo() {
   return (
     <div>
-      <MovieCard movie={sample} isFavorite={false} onToggleFavorite={(id) => console.log(id)} />
+      <MovieCard
+        movie={sample}
+        isFavorite={false}
+        onToggleFavorite={(id) => console.log(id)}
+      />
       {/* @ts-expect-error isFavorite должен быть boolean, а не строкой */}
       <MovieCard movie={sample} isFavorite="yes" onToggleFavorite={() => {}} />
       {/* @ts-expect-error забыли передать movie */}
