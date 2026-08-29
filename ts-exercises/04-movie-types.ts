@@ -12,28 +12,26 @@
 //     overview: "A thief who steals corporate secrets..."
 //   }
 
-
 // Задача 1. Опиши поля фильма (типы: number, string, number[]).
 // TODO: замени строку ниже на настоящие поля
 export interface Movie {
- id:number,
- title:string,
- poster_path:string,
- release_date:string,
- vote_aerage:number,
- genre_ids:number[],
- overview:string
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  vote_average: number;
+  genre_ids: number[];
+  overview: string;
 }
 
 // Задача 2. Ответ TMDB на список: { page, results, total_pages }.
 //   page — число,  results — массив Movie (Movie[]),  total_pages — число
 // TODO: замени строку ниже на настоящие поля
 export interface MoviesResponse {
-  page:number,
-  results:Movie[],
-  total_pages:number
+  page: number;
+  results: Movie[];
+  total_pages: number;
 }
-
 
 // ↓ Проверки — не трогай ↓
 const inception: Movie = {

@@ -3,12 +3,11 @@
 // Используем типы из упражнения 04.
 // Promise<...> — тип того, что возвращает async-функция.
 
-
 import type { Movie, MoviesResponse } from "./04-movie-types";
 
 // Задача 1. search — string | null, page — число. Возвращает строку (URL).
 // TODO
-export function buildMoviesUrl(search, page) {
+export function buildMoviesUrl(search: string | null, page: number): string {
   if (search) {
     return `https://api.themoviedb.org/3/search/movie?query=${search}&page=${page}`;
   }
@@ -18,7 +17,7 @@ export function buildMoviesUrl(search, page) {
 // Задача 2. Упрощённая fetchMovies. search — string | null, page — число.
 // Тип возврата:  Promise<MoviesResponse>
 // TODO
-export async function fetchMovies(search, page) {
+export async function fetchMovies(search: string | null, page: number) {
   const url = buildMoviesUrl(search, page);
   const response = await fetch(url);
   const data = await response.json();
@@ -27,13 +26,12 @@ export async function fetchMovies(search, page) {
 
 // Задача 3. favorites — массив чисел (number[]), id — число.
 // TODO
-export function toggleFavorite(favorites, id) {
+export function toggleFavorite(favorites: number[], id: number) {
   if (favorites.includes(id)) {
     return favorites.filter((favId) => favId !== id);
   }
   return [...favorites, id];
 }
-
 
 // ↓ Проверки — не трогай ↓
 buildMoviesUrl(null, 1);

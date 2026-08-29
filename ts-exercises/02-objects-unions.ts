@@ -18,7 +18,7 @@ const drama: Genre = { id: 18, name: "Drama" };
 // TODO: замени строку ниже на настоящие поля
 type User = {
 name:string,
-avatarUrl:string,
+avatarUrl?:string,
 };
 
 const userA: User = { name: "Аня" };

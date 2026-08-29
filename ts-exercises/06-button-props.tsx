@@ -3,14 +3,15 @@
 // Пропсы описываются как обычный объект.
 // () => void — функция без аргументов, которая ничего не возвращает (как onClick).
 
-
 // Задача. Опиши пропсы кнопки:
 //   label — строка
 //   onClick — функция:  () => void
 //   disabled — boolean, необязательный (?)
 // TODO: замени строку ниже на настоящие поля
 type ButtonProps = {
-  todo?: unknown;
+  label: string;
+  onClick: () => void;
+  disabled: boolean;
 };
 
 export function Button({ label, onClick, disabled }: ButtonProps) {
@@ -20,7 +21,6 @@ export function Button({ label, onClick, disabled }: ButtonProps) {
     </button>
   );
 }
-
 
 // ↓ Проверки — не трогай ↓
 export function Demo() {
