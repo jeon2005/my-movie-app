@@ -7,18 +7,16 @@
 
 import type { Movie } from "./04-movie-types";
 
-
 // Задача 1. Тип-union из всех имён полей Movie.
 // TODO: опиши тип через keyof Movie
-type MovieKey = string;
+type MovieKey = keyof Movie;
 
 // Задача 2. getField достаёт поле объекта по имени и сохраняет его тип.
 //   getField(movie, "title") -> string,  getField(movie, "vote_average") -> number
 // TODO: сделай дженерик <T, K extends keyof T>, параметры (obj: T, key: K), результат T[K]
-export function getField(obj, key) {
+export function getField<T, K extends keyof T>(obj: T, key: K) {
   return obj[key];
 }
-
 
 // ↓ Проверки — не трогай ↓
 const k1: MovieKey = "title";

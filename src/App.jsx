@@ -11,15 +11,15 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("search") ;
-  const page = Number(searchParams.get("page")) ;
+  const search = searchParams.get("search");
+  const page = Number(searchParams.get("page"));
+  console.log(page, searchParams.get("page"));
   const { movies, isError, totalPages, isLoading, error } = useMovies(
     search,
     page,
   );
   const toggleFavorite = (movieId) => {
     if (favorites.includes(movieId)) {
-      
       setFavorites(favorites.filter((id) => id !== movieId));
     } else {
       setFavorites([...favorites, movieId]);

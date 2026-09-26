@@ -7,20 +7,18 @@
 //
 // Это ровно твой useGenres: словарь «id жанра → его название».
 
-
 // Задача 1. Словарь жанров: ключ — id (число), значение — название (строка).
 // TODO: опиши тип через Record<number, string>
-type GenreMap = { todo?: unknown };
+type GenreMap = Record<number, string>;
 
 // Задача 2. Счётчик: сколько фильмов в каждом жанре.
 //   ключ — название жанра (строка), значение — количество (число).
 // TODO: опиши тип через Record<string, number>
-type GenreCounts = { todo?: unknown };
+type GenreCounts = Record<string, number>;
 
 // Задача 3. То же, что GenreMap, но через индексную сигнатуру.
 // TODO: опиши тип как  { [id: number]: string }
-type GenreDict = { todo?: unknown };
-
+type GenreDict = { [id: number]: string };
 
 // ↓ Проверки — не трогай ↓
 const genres: GenreMap = { 28: "Action", 18: "Drama", 878: "Sci-Fi" };

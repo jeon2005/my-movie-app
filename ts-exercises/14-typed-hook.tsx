@@ -5,19 +5,20 @@
 
 import type { Movie } from "./04-movie-types";
 
-
 // Задача 1. Тип результата useMovies — три состояния, как в упр. 12,
 //   но с настоящими данными: в success есть и movies, и totalPages.
 //   loading  -> { status: "loading" }
 //   error    -> { status: "error";   message: string }
 //   success  -> { status: "success"; movies: Movie[]; totalPages: number }
 // TODO: замени строку ниже на union из трёх вариантов
-type MoviesResult = { todo?: unknown };
+type MoviesResult =
+  | { status: "loading" }
+  | { status: "error"; message: string }
+  | { status: "success"; movies: Movie[]; totalPages: number };
 
 // Задача 2. Пропсы компонента: одно поле result типа MoviesResult.
 // TODO: замени строку ниже на настоящее поле
-type MovieListViewProps = { todo?: unknown };
-
+type MovieListViewProps = { result: MoviesResult };
 
 export function MovieListView({ result }: MovieListViewProps) {
   if (result.status === "loading") {
@@ -36,7 +37,6 @@ export function MovieListView({ result }: MovieListViewProps) {
     </ul>
   );
 }
-
 
 // ↓ Проверки — не трогай ↓
 const loading: MoviesResult = { status: "loading" };

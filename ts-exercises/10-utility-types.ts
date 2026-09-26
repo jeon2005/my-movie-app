@@ -8,19 +8,17 @@
 
 import type { Movie } from "./04-movie-types";
 
-
 // Задача 1. Превью для списка: только id, title и poster_path из Movie.
 // TODO: собери тип через Pick<Movie, ...>
-type MoviePreview = { todo?: unknown };
+type MoviePreview = Pick<Movie, "id" | "title" | "poster_path">;
 
 // Задача 2. Черновик нового фильма: всё как в Movie, но id ещё нет.
 // TODO: собери тип через Omit<Movie, ...>
-type MovieDraft = { todo?: unknown };
+type MovieDraft = Omit<Movie, "id">;
 
 // Задача 3. Патч для обновления: любое подмножество полей Movie.
 // TODO: собери тип через Partial<Movie>
-type MoviePatch = { todo?: unknown };
-
+type MoviePatch = Partial<Movie>;
 
 // ↓ Проверки — не трогай ↓
 const preview: MoviePreview = {

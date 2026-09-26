@@ -8,20 +8,20 @@
 // Задача 1. identity просто возвращает то, что получил.
 // Сделай её обобщённой: приняли number — вернули number, приняли string — string.
 // TODO: добавь <T>, типизируй параметр и результат
-export function identity(value) {
+export function identity<T>(value: T): T {
   return value;
 }
 
 // Задача 2. Вернуть первый элемент массива или null, если массив пуст.
 // Тип элемента заранее не известен — используй дженерик.
 // TODO: сделай <T>, параметр T[], результат  T | null
-export function firstOrNull(arr) {
+export function firstOrNull<T>(arr: T[]): T | null {
   return arr.length > 0 ? arr[0] : null;
 }
 
 // Задача 3. Обобщённый fetch: тип ответа задаётся при вызове —  fetchJson<Movie>(...).
 // TODO: сделай <T>, url: string, результат  Promise<T>
-export async function fetchJson(url) {
+export async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
   return response.json();
 }

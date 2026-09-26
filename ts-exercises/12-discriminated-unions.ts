@@ -9,14 +9,15 @@
 
 import type { Movie } from "./04-movie-types";
 
-
 // Задача. Опиши состояние запроса тремя вариантами:
 //   { status: "loading" }
 //   { status: "error";   message: string }
 //   { status: "success"; movies: Movie[] }
 // TODO: замени строку ниже на union из трёх вариантов
-type RequestState = { todo?: unknown };
-
+type RequestState =
+  | { status: "loading" }
+  | { status: "error"; message: string }
+  | { status: "success"; movies: Movie[] };
 
 // ↓ Проверки — не трогай ↓
 
