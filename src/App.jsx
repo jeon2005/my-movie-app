@@ -10,8 +10,13 @@ import { useMovies } from "./hooks/useMovies";
 function App() {
   const [favorites, setFavorites] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+<<<<<<< HEAD
   const search = searchParams.get("search") || "";
   const page = Number(searchParams.get("page")) || 1;
+=======
+  const search = searchParams.get("search");
+  const page = Number(searchParams.get("page"));
+>>>>>>> main
   const { movies, isError, totalPages, isLoading, error } = useMovies(
     search,
     page,
