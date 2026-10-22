@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
-export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
+import { routes } from "../const";
 
-  console.log('movie.id: ', typeof movie.id);
+export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
   
   return (
     <div className="relative bg-white rounded-xl border-gray-300 border overflow-hidden">
@@ -13,7 +13,7 @@ export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
         />
       </div>
 
-      <Link to={`/movie/${movie.id}`}>
+      <Link to={routes.movie(movie.id)}>
         <img
           src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
           alt={movie.title}
