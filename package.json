@@ -9,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "ts:check": "tsc -p ts-exercises/tsconfig.json",
-    "ts:check:solutions": "tsc -p ts-exercises/solutions/tsconfig.json"
+    "ts:check": "tsc -p ."
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

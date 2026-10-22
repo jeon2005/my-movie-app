@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
 export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
+
+  console.log('movie.id: ', typeof movie.id);
+  
   return (
     <div className="relative bg-white rounded-xl border-gray-300 border overflow-hidden">
       <div className="absolute top-2 right-2 z-10">

@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
 import { useMovies } from "./hooks/useMovies";
+import { routes } from "./const";
 function App() {
   const [favorites, setFavorites] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search");
-  const page = Number(searchParams.get("page"));
+  const page = Number(searchParams.get("page")) || 1;
   const { movies, isError, totalPages, isLoading, error } = useMovies(
     search,
     page,
@@ -60,7 +61,7 @@ function App() {
             }
           />
           <Route
-            path="/favorites"
+            path={routes.favorites}
             element={
               <FavoritesPage
                 movies={movies}
