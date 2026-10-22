@@ -24,7 +24,7 @@ export default function Filters({
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [searchValue,search, setSearchParams]);
+  }, [searchValue, search, setSearchParams]);
   return (
     <form className="py-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-2 md:px-0 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 sm:justify-center">
