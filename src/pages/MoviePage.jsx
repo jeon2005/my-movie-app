@@ -1,6 +1,6 @@
 import Button from "../components/Button";
 import { useParams } from "react-router-dom";
-import { useMovieDetails } from "../hooks/useMovieDetails";
+import { useMovieDetails } from "../hooks/useMovieDetails.ts";
 export default function MoviePage({ favorites, toggleFavorite }) {
   const { id } = useParams();
   const { data, isLoading, isError, error } = useMovieDetails(id);
