@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { Genre } from "../types";
 
-async function fetchGenres() {
+async function fetchGenres(): Promise<Genre[]> {
   const response = await fetch(
     "https://api.themoviedb.org/3/genre/movie/list?language=en-US",
     {
