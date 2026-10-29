@@ -1,12 +1,11 @@
 import MuiButton from "@mui/material/Button";
 
-function Button({ text, onButtonClick, ariaLabel }) {
+function Button({ text, onButtonClick }) {
   return (
     <MuiButton
       variant="contained"
       color="white"
       onClick={onButtonClick}
-      aria-label={ariaLabel}
     >
       {text}
     </MuiButton>

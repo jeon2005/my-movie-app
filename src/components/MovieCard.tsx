@@ -1,21 +1,29 @@
-import { Link } from "react-router-dom";
-import Button from "./Button";
-import { routes } from "../const";
+import { Link } from 'react-router-dom';
+import Button from './Button';
+import { routes } from '../const';
+import { Movie } from '../types';
 
-export default function MovieCard({ movie, isFavorite, toggleFavorite }) {
-  
+export default function MovieCard({
+  movie,
+  isFavorite,
+  toggleFavorite,
+}: {
+  movie: Movie;
+  isFavorite: boolean;
+  toggleFavorite: (id: number) => void;
+}) {
   return (
     <div className="relative bg-white rounded-xl border-gray-300 border overflow-hidden">
       <div className="absolute top-2 right-2 z-10">
         <Button
-          text={isFavorite ? "❤️" : "🤍"}
+          text={isFavorite ? '❤️' : '🤍'}
           onButtonClick={() => toggleFavorite(movie.id)}
         />
       </div>
 
       <Link to={routes.movie(movie.id)}>
         <img
-          src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+          src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
           alt={movie.title}
           className="w-full h-auto max-h-96 object-contain"
         />
