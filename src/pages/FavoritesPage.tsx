@@ -1,7 +1,7 @@
 import MovieList from "../components/MovieList";
+import { Movie } from "../types";
 
-
-export default function FavoritesPage({ movies, favorites, toggleFavorite }) {
+export default function FavoritesPage({ movies, favorites, toggleFavorite }: {movies: Movie[]; favorites: number[]; toggleFavorite: (id: number) => void;}) {
   const favoriteMovies = movies.filter((movie) => favorites.includes(movie.id));
 
   return (

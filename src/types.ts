@@ -7,5 +7,6 @@ export type Movie = {
   release_date: string,
   vote_average: number,
   genres: Genre[],
+  genre_ids: number[],
   overview: string,
 }

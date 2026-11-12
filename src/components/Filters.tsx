@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Movie, Genre } from "../types";
 export default function Filters({
   search,
   setSearchParams,
@@ -10,6 +11,17 @@ export default function Filters({
   setRating,
   movies,
   genres,
+}:{search: string;
+   setSearchParams: (params: { search: string; page: number }) => void;
+  year: string;
+  setYear: (year: string) => void;
+  genre: string;
+  setGenre: (genre: string) => void;
+  rating: string;
+  setRating: (rating: string) => void;
+  movies: Movie[];
+  genres: Genre[];
+
 }) {
   const [searchValue, setSearchValue] = useState(search);
   const years = movies.map((movie) => movie.release_date.slice(0, 4));

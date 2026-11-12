@@ -1,7 +1,8 @@
 import MovieCard from "./MovieCard";
+import { Movie } from "../types";
 
 
-export default function MovieList({ movies, favorites, toggleFavorite }) {
+export default function MovieList({ movies, favorites, toggleFavorite }: {movies:Movie[]; favorites: number[]; toggleFavorite:(id: number) => void;}) {
   return (
     <div
       className="max-w-6xl mx-auto px-4 py-6

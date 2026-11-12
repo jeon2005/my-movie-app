@@ -2,6 +2,19 @@ import MovieList from "../components/MovieList";
 import Filters from "../components/Filters";
 import { useGenres } from "../hooks/useGenres";
 import { useState } from "react";
+import { Movie } from "../types";
+type HomePageProps = {
+  movies: Movie[];
+  favorites: number[];
+  toggleFavorite: (id: number) => void;
+  search: string;
+  setSearchParams: (params: { search: string; page: number }) => void;
+  page: number;
+  isLoading: boolean;
+  error: Error;
+  isError: boolean;
+  totalPages: number;
+};
 export default function HomePage({
   movies,
   favorites,
@@ -13,7 +26,7 @@ export default function HomePage({
   error,
   isError,
   totalPages,
-}) {
+}: HomePageProps) {
   const [rating, setRating] = useState("");
   const [genre, setGenre] = useState("");
   const genres = useGenres();
@@ -22,7 +35,9 @@ export default function HomePage({
   const filteredMovies = movies.filter((movie) => {
     const matchesRating = rating ? movie.vote_average >= Number(rating) : true;
     const matchesGenre = genre ? movie.genre_ids.includes(Number(genre)) : true;
-    const matchesYear = selectedYear ? movie.release_date.startsWith(selectedYear) : true;
+    const matchesYear = selectedYear
+      ? movie.release_date.startsWith(selectedYear)
+      : true;
     return matchesRating && matchesGenre && matchesYear;
   });
 
